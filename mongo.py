@@ -5,11 +5,12 @@ MONGO_URL = "mongodb+srv://arru8209:ARMANKING09X@cluster0.kh8ioei.mongodb.net/?a
 try:
     client = MongoClient(MONGO_URL, serverSelectionTimeoutMS=5000)
 
-    # Test connection
     client.admin.command("ping")
 
     print("✅ MongoDB connection working!")
-    print("Database:", client.get_default_database())
+
+    db = client["mybot"]
+    print("✅ Database:", db.name)
 
 except Exception as e:
     print("❌ MongoDB connection failed:")
